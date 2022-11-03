@@ -4,7 +4,7 @@ const dateFormat = require('../utils/dateFormat');
 
 const commentSchema = new Schema (
   {
-    thoughtText: {
+    commentText: {
       type: String,
       required: 'You need to leave a comment!',
       minlength: 1,
@@ -32,6 +32,5 @@ commentSchema.virtual('replyCount').get(function() {
   return this.replies.length;
 });
 
-const Comment = model('Comment', commentSchema);
 
-module.exports = Comment;
+module.exports = commentSchema;
