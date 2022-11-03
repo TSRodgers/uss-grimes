@@ -1,45 +1,64 @@
-const { User, Thought } = require('../models');
+const { User, Comment, Photo } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    me: async (parent, args, context) => {
-      if (context.user) {
-        const userData = await User.findOne({ _id: contect.user._id })
-        .select('-__v -password')
-        .populate('comments')
+    categories: async () => {
+      return await Category.find();
+    },
+    photos: async (parent, { category, name }) => {
+      const params = {};
 
-        return userData;
+      if (category) {
+        params.category = category;
       }
 
-      throw new AuthenticationError('Not logged in!');
-    },
-    comments: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Comment.find(params).sort({ createdAt: -1 });
-    },
-    comment: async (parent, { _id }) => {
-      return Comment.findOne({ _id });
-    },
-    user: async (parent, { username }) => {
-      return User.findOne({ username })
-      .select('-__v -password')
-      .populate('comments')
-    },
+      if (name) {
+        params.name = {
+          $regex: name
+        };
+      }
+
+      return await Photo.find(params).populate('category');
+     },
+     photo: async (parent, { _id }) => {
+      return await Product.findById(_id).populate('category');
+     }
   },
   Mutation: {
-    addComment: async (parent, args, context) => {
-      if (context.user) {
-        const comment = await Comment.create({...args, username: context.user.username });
+    addUser: async (parent, args) => {
+      const user = await User.create(args);
+      const token = signToken(user);
 
-        await User.findByIdAndUpdate(
-          { _id: context.user._id },
-          { $push: { comments: comment._id } },
-          { new: true }
+      return { token, user };
+    },
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw new AuthenticationError('incorrect credentials')
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError('incorrect credentials')
+      }
+
+      const token = signToken(user);
+      
+      return { token, user }
+    },
+    addComment: async (parent, { photoId, commentText }, context) => {
+      if (context.user) {
+        const updatedPhoto = await Photo.findByIdAndUpdate(
+          { _id: photoId },
+          { $push: { comments: { commentText, username: context.user.username } } },
+          { new: true, runValidators: true }
         );
 
-        return comment
+        return updatedPhoto
       }
 
       throw new AuthenticationError('You need to be logged in!');

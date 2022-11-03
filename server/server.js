@@ -23,14 +23,12 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// serve up static assets 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
-}
+// Serve up static assets
+app.use('/images', express.static(path.join(__dirname, '../client/images')));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
+//app.get('*', (req, res) => {
+ // res.sendFile(path.join(__dirname, '../client/build/index.html'));
+//});
 
 // create a new instance of an Apollor server with the GraphQL schema
 const startApolloServer = async (typeDefs, resolvers) => {
