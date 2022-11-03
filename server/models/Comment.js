@@ -33,5 +33,3 @@ commentSchema.virtual('replyCount').get(function() {
 });
 
 const Comment = model('Comment', commentSchema);
-
-module.exports = Comment;

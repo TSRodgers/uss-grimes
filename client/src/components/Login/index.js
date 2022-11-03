@@ -6,5 +6,10 @@ const Login = () => {
     <div>Login</div>
   )
 }
+import React from 'react'
 
-export default Login
+const Login = () => {
+  return (
+    <div>Login</div>
+  )
+}
