@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react';
+import PhotoList from '../components/PhotoList';
+import CategoryMenu from '../components/CategoryMenu';
 
-export const Gallery = () => {
+const Gallery = () => {
+  const [currentCategory, setCategory] = useState('');
+
   return (
-    <div>Gallery</div>
+    <div>
+      <CategoryMenu setCategory={setCategory} />
+      <PhotoList currentCategory={currentCategory} />
+    </div>
   )
 }
+
+export default Gallery;
