@@ -40,6 +40,8 @@ const typeDefs = gql `
   }
 
   type Query {
+    me: User
+    users: [User]
     categories: [Category]
     photos(category: ID, name: String): [Photo]
     photo(_id: ID!): Photo
@@ -47,7 +49,7 @@ const typeDefs = gql `
 
   type Mutation {
     login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, password: String!): Auth
+    createUser(username: String!, email: String!, password: String!): Auth
     addComment(photoId: ID!, commentText: String!): Photo
     addReply(commentId: ID!, replyBody: String!): Comment
   }
