@@ -11,7 +11,10 @@ export const QUERY_PHOTOS = gql`
         _id
       }
       comments {
+        _id
         commentText
+        createdAt
+        username
       }
     }
   }

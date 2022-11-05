@@ -21,7 +21,7 @@ const photoSchema = new Schema(
       ref: 'Category',
       required: true
     },
-    comments: [commentSchema]
+    comments: [commentSchema] 
   }
 );
 

@@ -1,4 +1,4 @@
-const { User, Comment, Photo, Category } = require('../models');
+const { User, Photo, Category, Comment } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -23,7 +23,7 @@ const resolvers = {
       return await Photo.find(params).populate('category');
      },
      photo: async (parent, { _id }) => {
-      return await Product.findById(_id).populate('category');
+      return await Photo.findById(_id).populate('category');
      }
   },
   Mutation: {
@@ -55,7 +55,7 @@ const resolvers = {
         const updatedPhoto = await Photo.findByIdAndUpdate(
           { _id: photoId },
           { $push: { comments: { commentText, username: context.user.username } } },
-          { new: true, runValidators: true }
+          { new: true }
         );
 
         return updatedPhoto
@@ -63,15 +63,15 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
-    addReply: async(parent, { commentId, replyBody }, context) => {
+    addReply: async(parent, { photoId, commentId, replyBody }, context) => {
       if (context.user) {
-        const updatedComment = await Comment.findOneAndUpdate(
-          { _id: commentId },
-          { $push: { replies: { replyBody, username: context.user.username } } },
+        const updatedPhoto = await Photo.findByIdAndUpdate(
+          { _id: photoId },
+          { $push: {} },
           { new: true, runValidators: true }
         );
 
-        return updatedComment
+        return updatedPhoto
       }
 
       throw new AuthenticationError('You need to be logged in!');

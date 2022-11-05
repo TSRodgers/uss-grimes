@@ -5,7 +5,6 @@ import { QUERY_CATEGORIES } from '../../utils/queries';
 function CategoryMenu({ setCategory }) {
   const { data: categoryData } = useQuery(QUERY_CATEGORIES);
   const categories = categoryData?.categories || [];
-  console.log(categories);
   return (
     <div>
       <h2>Choose a Category:</h2>
