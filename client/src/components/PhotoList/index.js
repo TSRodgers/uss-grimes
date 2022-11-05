@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/client';
-import React from 'react';
+import React, { useState } from 'react';
 import PhotoItem from '../PhotoItem';
+import Modal from '../Modal';
 import { QUERY_PHOTOS } from '../../utils/queries';
 import './index.css';
 
@@ -21,8 +22,16 @@ const PhotoList = ({ currentCategory }) => {
     );
   }
 
+  const [currentPhoto, setCurrentPhoto] = useState();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const toggleModal = (photo, i) => {
+    setCurrentPhoto({...photo, index: i});
+    setIsModalOpen(!isModalOpen);
+  }
+
   return (
     <div>
+      {isModalOpen && <Modal currentPhoto={currentPhoto} onClose={toggleModal} />}
       <h2>Our Photos:</h2>
       {photos.length ? (
         <div>
@@ -33,6 +42,7 @@ const PhotoList = ({ currentCategory }) => {
               photo={photo.photo}
               name={photo.name}
               description={photo.description}
+              onClick={() => toggleModal(photo)}
             />
           ))}
         </div>

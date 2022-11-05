@@ -11,24 +11,10 @@ export const QUERY_PHOTOS = gql`
         _id
       }
       comments {
-        commentText
-      }
-    }
-  }
-`;
-
-export const QUERY_THOUGHT = gql`
-  query thought($id: ID!) {
-    thought(_id: $id) {
-      _id
-      thoughtText
-      createdAt
-      username
-      reactions {
         _id
+        commentText
         createdAt
         username
-        reactionBody
       }
     }
   }

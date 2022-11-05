@@ -14,7 +14,7 @@ import Home from "./pages/Home";
 import Journal from "./pages/Journal";
 import NoMatch from "./pages/NoMatch";
 import Login from "./pages/Login";
-import Signup from './pages/Signup';
+import Signup from "./pages/Signup";
 
 const httpLink = createHttpLink({
   uri: '/graphql',
