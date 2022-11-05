@@ -1,5 +1,5 @@
 const db = require('./connection');
-const { User, Product, Category, Photo } = require('../models');
+const { User, Category, Photo } = require('../models');
 
 db.once('open', async () => {
   await Category.deleteMany();
@@ -106,10 +106,16 @@ db.once('open', async () => {
       photo: 's14.jpg'
     },
     {
+      name: 'Military funeral',
+      category: categories[1]._id,
+      description: 'No description is provided for this image. Taken in September 1945, on Saipan.',
+      photo: 's15.jpg'
+    },
+    {
       name: 'Girls in Saipan',
       category: categories[1]._id,
       description: 'The pretty native girls are not all in Hollywood. These are natives of Saipan.',
-      photo: 's15.jpg'
+      photo: 's16.jpg'
     },
     {
       name: 'Japanse Navy Lt. Commander',
