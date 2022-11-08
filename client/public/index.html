@@ -10,34 +10,47 @@
       content="Web site created using create-react-app"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
+    
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+    
     <title>React App</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+  <!-- NAV BAR -->
+    <body class="scrollspy-example" data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="0" tabindex="0">
+      <nav class="navbar navbar-expand-lg navbar-light py-4 py-lg-0 fixed-top bg-white border-bottom">
+        <div class="container"><a class="navbar-brand font-serif text-uppercase h6 text-primary fw-bold mb-0" href="#intro">Home</a>
+          <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item"><a class="nav-link text-uppercase" href="#about">About</a></li>
+              <li class="nav-item"><a class="nav-link text-uppercase" href="#photos">Photos</a></li>
+              <li class="nav-item"><a class="nav-link text-uppercase" href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <!-- END NAV BAR -->
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+  <!-- FOOTER -->
+  <footer class="py-5 bg-dark text-light">
+    <div class="container py-3">
+      <div class="row gy-3 mb-4 text-center align-items-center">
+        <div class="col-md-6 text-lg-start">
+          <ul class="list-inline">
+            <li class="list-inline-item"><a class="social-link github" href="#"> <i class="fab fa-github-square"></i></a></li>
+            <li class="list-inline-item"><a class="social-link linkedin" href="#"> <i class="fab fa-linkedin"></i></a></li>
+            <li class="list-inline-item"><a class="social-link email" href="#"> <i class="fas fa-envelope-open"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-md-6 text-lg-end">
+          <p class="mb-0 font-serif text-sm">© 2022 William Stolley</p>
+        </div>
+      </div>
+      <div class="text-center">
+      </div>
+    </div>
+  </footer>
+  <!-- END FOOTER-->
   </body>
 </html>
