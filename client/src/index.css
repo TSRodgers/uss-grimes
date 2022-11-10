@@ -37,3 +37,24 @@ code {
 	font-weight: 600;
 	margin-bottom: 25px;
 }
+
+.modalBtn {
+	z-index: 2;
+}
+
+.page {
+	background-color: #ede0d3;
+	color: #5f3100
+}
+
+.page img {
+	height: 700px;
+}
+
+.page .text {
+	color: #000
+}
+
+.journal {
+	background-image: url(../src/assets/journal/Journal-P0.jpg);
+}
