@@ -1,5 +1,8 @@
 import React from "react";
 import Carousel from 'react-bootstrap/Carousel'
+
+
+
 // const Home = () => {
 //   return (
 //     <div className='Home'>
@@ -12,13 +15,15 @@ import Carousel from 'react-bootstrap/Carousel'
 //   );
 // };
 
-function Home() {
+export default function Home() {
+  
   return (
+
     <Carousel variant="dark">
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="./j1.jpg"
+          src="https://www.history.com/.image/t_share/MTU3OTIzNjU0NDk4NzIzNDc0/the-pictures-that-defined-world-war-iis-featured-photo.jpg"
           alt="First slide"
         />
         <Carousel.Caption>
@@ -29,7 +34,7 @@ function Home() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=Second slide&bg=eee"
+          src="https://d1zobuonyq0aiw.cloudfront.net/images/thoughthub/thumbnails/2015/7-Interesting-Features-of-World-War-2-2.jpg"
           alt="Second slide"
         />
         <Carousel.Caption>
@@ -40,7 +45,7 @@ function Home() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=Third slide&bg=e5e5e5"
+          src="https://s.hdnux.com/photos/73/43/27/15611372/6/ratio3x2_1800.jpg"
           alt="Third slide"
         />
         <Carousel.Caption>
@@ -54,4 +59,4 @@ function Home() {
   );
 }
 
-export default Home
+// export default Home
