@@ -6,18 +6,6 @@ import PhotoItem from '../components/PhotoItem';
 
 
 
-// const Home = () => {
-//   return (
-//     <div className='Home'>
-//       <Carousel>
-//         <CarouselItem>USS Grimes</CarouselItem>
-//         <CarouselItem>Picture</CarouselItem>
-//         <CarouselItem>Boat</CarouselItem>
-//       </Carousel>
-//     </div>
-//   );
-// };
-
 export default function Home() {
   const { loading, data } = useQuery(QUERY_PHOTOS);
 
