@@ -4,7 +4,7 @@ import JournalItem from '../components/Journal'
 
 const Journal = () => {
   return (
-    <div>
+    <div className='container'>
       <JournalItem/>
     </div>
   )
