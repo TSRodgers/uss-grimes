@@ -3,7 +3,7 @@ import React from 'react'
 const CommentList = ({ comments }) => {
   return (
     <div>
-      <div>Comments</div>
+      <div className='border-bottom border-secondary'>Comments: </div>
       <div>
         {comments &&
           comments.map(comment => (

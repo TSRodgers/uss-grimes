@@ -1,5 +1,8 @@
+import { useQuery } from "@apollo/client";
 import React from "react";
 import Carousel from 'react-bootstrap/Carousel'
+import { QUERY_PHOTOS } from '../utils/queries';
+import PhotoItem from '../components/PhotoItem';
 
 
 
@@ -16,46 +19,29 @@ import Carousel from 'react-bootstrap/Carousel'
 // };
 
 export default function Home() {
+  const { loading, data } = useQuery(QUERY_PHOTOS);
+
+  const photos = data?.photos || [];
   
   return (
 
-    <Carousel variant="dark">
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="https://www.history.com/.image/t_share/MTU3OTIzNjU0NDk4NzIzNDc0/the-pictures-that-defined-world-war-iis-featured-photo.jpg"
-          alt="First slide"
-        />
-        <Carousel.Caption>
-          <h5>First slide label</h5>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="https://d1zobuonyq0aiw.cloudfront.net/images/thoughthub/thumbnails/2015/7-Interesting-Features-of-World-War-2-2.jpg"
-          alt="Second slide"
-        />
-        <Carousel.Caption>
-          <h5>Second slide label</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="https://s.hdnux.com/photos/73/43/27/15611372/6/ratio3x2_1800.jpg"
-          alt="Third slide"
-        />
-        <Carousel.Caption>
-          <h5>Third slide label</h5>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
+<div className="container">
+     <div className="mx-auto mt-5">
+        <Carousel variant="dark">
+          {photos.map((photo) => (
+            <Carousel.Item>
+              <PhotoItem 
+                  key={photo._id}
+                  _id={photo._id}
+                  photo={photo.photo}
+                  name={photo.name}
+                  description={photo.description}
+                />
+            </Carousel.Item>
+          ))}
+        </Carousel>
+     </div>
+</div>
   );
 }
 

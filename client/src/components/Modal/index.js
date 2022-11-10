@@ -10,22 +10,22 @@ const Modal = ({ onClose, currentPhoto }) => {
   console.log(comments);
 
   return (
-    <div className="modalBackdrop">
+    <div className="modalBackdrop shadow-lg text-light">
     <div className="modalContainer">
-      <h3 className="modalTitle">{name}</h3>
-      <img src={(`/images/${photo}`)} alt={name} />
-      <p>
-        {description}
-      </p>
-      <div>
-        {comments.length ? (
-          <CommentList comments={comments} />
-        ) : <div>No one has left a comment yet!</div> }
-        {Auth.loggedIn() && <CommentForm photoId={photo._id} />}
-      </div>
-      <button onClick={onClose} type="button">
-        Close this modal
-      </button>
+      <h2 className="text-center">{name}</h2>
+      <img src={(`/images/${photo}`)} alt={name} className="img-fluid"/>
+     <div className='bg-dark p-3'>
+          <p>
+            {description}
+          </p>
+          {comments.length ? (
+            <CommentList comments={comments} />
+          ) : <div>No one has left a comment yet!</div> }
+          {Auth.loggedIn() && <CommentForm photoId={photo._id} />}
+        <button onClick={onClose} type="button">
+          Close this modal
+        </button>
+     </div>
     </div>
   </div>
   )
