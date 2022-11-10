@@ -26,9 +26,13 @@ app.use(express.json());
 // Serve up static assets
 app.use('/images', express.static(path.join(__dirname, '../client/images')));
 
-//app.get('*', (req, res) => {
- // res.sendFile(path.join(__dirname, '../client/build/index.html'));
-//});
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+};
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
 
 // create a new instance of an Apollor server with the GraphQL schema
 const startApolloServer = async (typeDefs, resolvers) => {
