@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import PhotoItem from '../PhotoItem';
 import Modal from '../Modal';
 import { QUERY_PHOTOS } from '../../utils/queries';
-import './index.css';
 
 
 const PhotoList = ({ currentCategory }) => {
