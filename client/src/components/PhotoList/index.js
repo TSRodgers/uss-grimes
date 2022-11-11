@@ -33,16 +33,19 @@ const PhotoList = ({ currentCategory }) => {
       {isModalOpen && <Modal currentPhoto={currentPhoto} onClose={toggleModal} />}
       <h2>Our Photos:</h2>
       {photos.length ? (
-        <div>
+        <div className='row'>
           {filterPhotos().map((photo) => (
-            <PhotoItem 
-              key={photo._id}
-              _id={photo._id}
-              photo={photo.photo}
-              name={photo.name}
-              description={photo.description}
-              onClick={() => toggleModal(photo)}
-            />
+            
+              <div className='col-12 col-sm-6 col-lg-3 p-3'>
+                <PhotoItem 
+                  key={photo._id}
+                  _id={photo._id}
+                  photo={photo.photo}
+                  name={photo.name}
+                  description={photo.description}
+                  onClick={() => toggleModal(photo)}
+                />
+              </div>
           ))}
         </div>
       ) : (

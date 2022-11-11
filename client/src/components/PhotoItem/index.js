@@ -8,6 +8,7 @@ const PhotoItem = ({ photo, name, onClick }) => {
         alt={name}
         src={`/images/${photo}`}
         onClick={onClick}
+        className='w-100'
       />
     </div>
   )
