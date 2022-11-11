@@ -7,7 +7,7 @@ import PhotoItem from '../components/PhotoItem';
 
 
 export default function Home() {
-  const { loading, data } = useQuery(QUERY_PHOTOS);
+  const { data } = useQuery(QUERY_PHOTOS);
 
   const photos = data?.photos || [];
   
